@@ -1,0 +1,16 @@
+@(items: Seq[Item], form: Form[ItemName])(implicit messages: Messages)
+
+@main("Edit Items") {
+  <H1>Enter Item to Edit</H1>
+
+  <br>
+  @helper.form(routes.Application.selectItemToEdit) {
+    @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
+    <button type="submit"> Edit Item </button>
+  }
+
+  <br>
+  @helper.form(routes.Application.listItems()) {
+    <button type="submit"> Cancel </button>
+  }
+}

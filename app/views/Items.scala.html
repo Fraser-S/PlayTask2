@@ -1,0 +1,48 @@
+@(items: Seq[Item], form: Form[Item])(implicit messages: Messages)
+
+@main("Items") {
+    <H1>Items</H1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Maker</th>
+                <th>Warranty</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Seller</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for(item <- items) {
+            <tr>
+                <td>@item.name</td>
+                <td>@item.description</td>
+                <td>@item.maker</td>
+                <td>@item.warranty</td>
+                <td>£@item.price</td>
+                <td>£@item.discount</td>
+                <td>@item.seller</td>
+                <td>@item.picture</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <br>
+    @helper.form(routes.Application.addItem()){
+        <button type="submit"> Add Item</button>
+    }
+
+    <br>
+    @helper.form(routes.Application.editItemSelection()){
+        <button type="submit"> Edit Item</button>
+    }
+
+    <br>
+    @helper.form(routes.Application.deleteItemSelection()){
+        <button type="submit"> Delete Item</button>
+    }
+}
