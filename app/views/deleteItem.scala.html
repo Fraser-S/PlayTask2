@@ -1,16 +1,22 @@
 @(items: Seq[Item], form: Form[ItemName])(implicit messages: Messages)
 
 @main("Edit Items") {
-    <H1>Enter Item Name to Delete</H1>
+    <div class="panel panel-default">
+        <div class="panel-heading"><H1>Items</H1></div>
 
+    </div>
+
+    <div class="panel-body">
     <br>
     @helper.form(routes.Application.deleteItem) {
     @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
-    <button type="submit"> Delete Item </button>
+
+    <button type="submit" class="btn btn-danger btn-block"> Delete Item </button>
     }
 
     <br>
     @helper.form(routes.Application.listItems()) {
-    <button type="submit"> Cancel </button>
+    <button type="submit" class="btn btn-primary btn-block"> Cancel </button>
     }
+    </div>
 }

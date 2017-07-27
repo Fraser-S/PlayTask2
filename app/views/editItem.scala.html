@@ -1,9 +1,12 @@
 @(item: Item, index: Int,form: Form[Item])(implicit messages: Messages)
 
 @main("Add Item") {
-  <H1>Edit Item</H1>
-  <br>
 
+  <div class="panel panel-default">
+    <div class="panel-heading"><H1>Edit Item</H1></div>
+  </div>
+
+  <br>
   @helper.form(routes.Application.updateItem(index)){
     @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
     @helper.inputText(form("description"), '_label -> "description", '_showConstraints -> false)
@@ -13,11 +16,11 @@
     @helper.inputText(form("discount"), '_label -> "discount", '_showConstraints -> false)
     @helper.inputText(form("seller"), '_label -> "seller", '_showConstraints -> false)
     @helper.inputText(form("picture"), '_label -> "picture", '_showConstraints -> false)
-    <button type="submit"> Edit Item </button>
+    <button type="submit" class="btn btn-primary btn-block"> Edit Item </button>
   }
 
   <br>
   @helper.form(routes.Application.listItems()){
-    <button type="submit"> Cancel </button>
+    <button type="submit" class="btn btn-danger btn-block"> Cancel </button>
   }
 }

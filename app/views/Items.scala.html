@@ -1,48 +1,49 @@
 @(items: Seq[Item], form: Form[Item])(implicit messages: Messages)
 
 @main("Items") {
-    <H1>Items</H1>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Maker</th>
-                <th>Warranty</th>
-                <th>Price</th>
-                <th>Discount</th>
-                <th>Seller</th>
-                <th>Picture</th>
-            </tr>
-        </thead>
-        <tbody>
-        @for(item <- items) {
-            <tr>
-                <td>@item.name</td>
-                <td>@item.description</td>
-                <td>@item.maker</td>
-                <td>@item.warranty</td>
-                <td>£@item.price</td>
-                <td>£@item.discount</td>
-                <td>@item.seller</td>
-                <td>@item.picture</td>
-            </tr>
-        }
-        </tbody>
-    </table>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Items</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Maker</th>
+                    <th>Warranty</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Seller</th>
+                    <th>Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for(item <- items) {
+                <tr>
+                    <td>@item.name</td>
+                    <td>@item.description</td>
+                    <td>@item.maker</td>
+                    <td>@item.warranty</td>
+                    <td>£@item.price</td>
+                    <td>£@item.discount</td>
+                    <td>@item.seller</td>
+                    <td>@item.picture</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 
     <br>
     @helper.form(routes.Application.addItem()){
-        <button type="submit"> Add Item</button>
+        <button type="submit" class="btn btn-primary btn-block"> Add Item</button>
     }
-
     <br>
-    @helper.form(routes.Application.editItemSelection()){
-        <button type="submit"> Edit Item</button>
+    @helper.form(routes.Application.editItemSelection()) {
+        <button type="submit" class="btn btn-info btn-block"> Edit Item</button>
     }
-
     <br>
     @helper.form(routes.Application.deleteItemSelection()){
-        <button type="submit"> Delete Item</button>
+        <button type="submit" class="btn btn-danger btn-block"> Delete Item</button>
     }
 }

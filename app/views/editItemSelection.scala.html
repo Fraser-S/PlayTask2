@@ -1,16 +1,20 @@
 @(items: Seq[Item], form: Form[ItemName])(implicit messages: Messages)
 
 @main("Edit Items") {
-  <H1>Enter Item to Edit</H1>
+  <div class="panel panel-default">
+    <div class="panel-heading"><H1>Enter Item to Edit</H1></div>
+  </div>
 
-  <br>
-  @helper.form(routes.Application.selectItemToEdit) {
-    @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
-    <button type="submit"> Edit Item </button>
-  }
+  <div class="panel-body">
+    <br>
+    @helper.form(routes.Application.selectItemToEdit) {
+      @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
+      <button type="submit" class="btn btn-info btn-block"> Edit Item </button>
+    }
 
-  <br>
-  @helper.form(routes.Application.listItems()) {
-    <button type="submit"> Cancel </button>
-  }
+    <br>
+    @helper.form(routes.Application.listItems()) {
+      <button type="submit" class="btn btn-danger btn-block"> Cancel </button>
+    }
+  </div>
 }
