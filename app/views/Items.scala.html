@@ -35,7 +35,7 @@
     </div>
 
     <br>
-    @helper.form(routes.Application.addItem()){
+    @helper.form(routes.mongoController.addItem()){
         <button type="submit" class="btn btn-primary btn-block"> Add Item</button>
     }
     <br>
@@ -43,7 +43,7 @@
         <button type="submit" class="btn btn-info btn-block"> Edit Item</button>
     }
     <br>
-    @helper.form(routes.Application.deleteItemSelection()){
+    @helper.form(routes.mongoController.deleteItem()){
         <button type="submit" class="btn btn-danger btn-block"> Delete Item</button>
     }
 }

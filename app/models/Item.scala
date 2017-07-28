@@ -2,9 +2,7 @@ package models
 
 import play.api.data.Form
 import play.api.data.Forms._
-
 import scala.collection.mutable.ArrayBuffer
-
 
 case class Item(name: String, description: String, maker: String, warranty: String,
               price: Int, discount: Int, seller: String, picture: String)
@@ -36,4 +34,9 @@ object Item{
     Item("Item2", "some description", "maker", "3 years", 125, 12, "seller", "picture location"),
     Item("Item3", "some description", "maker", "1 years", 50, 5, "seller", "picture location")
   )
+}
+
+object JsonFormats {
+  import play.api.libs.json.Json
+  implicit val itemFormat = Json.format[Item]
 }

@@ -7,7 +7,7 @@
     </div>
 
     <div class="panel-body">
-        @helper.form(routes.Application.createItem()){
+        @helper.form(routes.mongoController.create()){
             @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
             @helper.inputText(form("description"), '_label -> "description", '_showConstraints -> false)
             @helper.inputText(form("maker"), '_label -> "maker", '_showConstraints -> false)
@@ -20,7 +20,7 @@
         }
 
         <br>
-        @helper.form(routes.Application.listItems()){
+        @helper.form(routes.mongoController.list()){
             <button type="submit" class="btn btn-block btn-danger"> Cancel </button>
         }
     </div>

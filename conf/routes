@@ -3,9 +3,15 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.listItems
+#GET     /                           controllers.Application.listItems
 
 # route for items
+
+GET     /                           controllers.mongoController.list
+GET     /create                     controllers.mongoController.addItem
+POST    /create                     controllers.mongoController.create
+GET     /delete                     controllers.mongoController.delete
+POST    /delete                     controllers.mongoController.deleteItem
 
 GET     /items                      controllers.Application.listItems
 POST    /items                      controllers.Application.createItem

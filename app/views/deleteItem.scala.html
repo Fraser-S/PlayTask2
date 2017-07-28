@@ -1,4 +1,4 @@
-@(items: Seq[Item], form: Form[ItemName])(implicit messages: Messages)
+@(form: Form[ItemName])(implicit messages: Messages)
 
 @main("Edit Items") {
     <div class="panel panel-default">
@@ -8,14 +8,14 @@
 
     <div class="panel-body">
     <br>
-    @helper.form(routes.Application.deleteItem) {
+    @helper.form(routes.mongoController.deleteItem) {
     @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
 
     <button type="submit" class="btn btn-danger btn-block"> Delete Item </button>
     }
 
     <br>
-    @helper.form(routes.Application.listItems()) {
+    @helper.form(routes.mongoController.list()) {
     <button type="submit" class="btn btn-primary btn-block"> Cancel </button>
     }
     </div>

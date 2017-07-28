@@ -1,3 +1,4 @@
+
 package controllers
 
 import javax.inject.Inject
@@ -62,18 +63,18 @@ class Application @Inject()(val messagesApi: MessagesApi) extends Controller wit
   }
 
   def deleteItemSelection(): Action[AnyContent] = Action{ implicit request =>
-    Ok(views.html.deleteItem(Item.items, Item.createNameForm))
+    Ok(views.html.deleteItem(Item.createNameForm))
   }
 
   def deleteItem(): Action[AnyContent] = Action { implicit request =>
     val formValidationResult = Item.createNameForm.bindFromRequest
     formValidationResult.fold({ formWithErrors =>
-      BadRequest(views.html.deleteItem(Item.items, formWithErrors))
+      BadRequest(views.html.deleteItem( formWithErrors))
     }, { itemName =>
       val item = Item.items.filter(item => item.name == itemName.name).headOption
       item match {
         case Some(i) => Item.items.remove(getIndex(i)); Redirect(routes.Application.listItems())
-        case _ => BadRequest(views.html.deleteItem(Item.items,Item.createNameForm))
+        case _ => BadRequest(views.html.deleteItem(Item.createNameForm))
       }
     })
   }
